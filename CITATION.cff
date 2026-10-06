@@ -11,6 +11,7 @@ abstract: >-
   An interactive artwork that makes the writing process visible as a palimpsest:
   tempo, pauses, deletions, additions and the trail of the mouse are recorded in the
   browser and turned into a layered image and a navigable space of time.
+  Source code: MIT License; website texts and images: CC BY 4.0.
 authors:
   - given-names: Adrian
     family-names: Regez
@@ -20,9 +21,7 @@ date-released: 2026-10-05
 url: "https://whatwastherebefore.com"
 repository-code: "https://github.com/AdiRegez/whatwastherebefore"
 # doi: 10.5281/zenodo.XXXXXXX
-license:
-  - MIT
-  - CC-BY-4.0
+license: MIT
 keywords:
   - writing process
   - palimpsest
