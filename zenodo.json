@@ -1,7 +1,7 @@
 {
   "upload_type": "software",
   "title": "What Was There Before / Was vorher da war",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publication_date": "2026-10-06",
   "description": "<p>An interactive web-based artwork that makes the writing process visible as a palimpsest: tempo, pauses, deletions, additions and the trail of the mouse are recorded in the browser and turned into a layered image and a navigable space of time. Runs entirely in the browser; no data is transmitted.</p><p>Ein interaktives, webbasiertes Kunstwerk, das den Schreibprozess als Palimpsest sichtbar macht.</p>",
   "creators": [
