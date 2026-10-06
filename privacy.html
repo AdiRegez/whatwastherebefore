@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>/* Sprache vor dem ersten Zeichnen setzen (verhindert Aufflackern) und
+     kanonische Adresse je Sprache angeben (Deutsch und Englisch werden getrennt indexiert) */
+    (function () {
+      var en = /[?&]lang=en(&|$)/.test(location.search);
+      if (en) document.documentElement.lang = "en";
+      var l = document.createElement("link");
+      l.rel = "canonical"; l.href = "https://whatwastherebefore.com/privacy.html" + (en ? "?lang=en" : "");
+      document.head.appendChild(l);
+    })();</script>
+  <title>Datenschutz – What Was There Before</title>
+  <meta name="description" content="Datenschutz bei What Was There Before: Was du schreibst, bleibt in deinem Browser. Keine Cookies, kein Tracking." />
+  <meta name="author" content="Adrian Regez" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="alternate" hreflang="de" href="https://whatwastherebefore.com/privacy.html" />
+  <link rel="alternate" hreflang="en" href="https://whatwastherebefore.com/privacy.html?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://whatwastherebefore.com/privacy.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="What Was There Before" />
+  <meta property="og:title" content="Datenschutz – What Was There Before" />
+  <meta property="og:description" content="Datenschutz bei What Was There Before: Was du schreibst, bleibt in deinem Browser. Keine Cookies, kein Tracking." />
+  <meta property="og:url" content="https://whatwastherebefore.com/privacy.html" />
+  <meta property="og:image" content="https://whatwastherebefore.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="What Was There Before – ein Palimpsest des Schreibens" />
+  <meta property="og:locale" content="de_CH" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#f4f1eb" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="privacy" class="page-info">
+
+  <header class="site-head">
+    <a class="brand" href="./" data-internal="./" data-i18n-aria="homeLabel" aria-label="What Was There Before – zum Werk">
+      <svg class="brand-mark" viewBox="9 6 47 54" aria-hidden="true" focusable="false"><rect x="24" y="8" width="30" height="36" rx="3" fill="#d2cbbf"/><rect x="17" y="15" width="30" height="36" rx="3" fill="#b2a795"/><rect x="11.5" y="22.5" width="29" height="35" rx="2.5" fill="#fbfaf6" stroke="#1b1a17" stroke-width="3"/><rect x="17" y="32" width="18" height="4" rx="1" fill="#1b1a17"/><rect x="17" y="41" width="10" height="4" rx="1" fill="#1b1a17"/><rect x="29.5" y="38.5" width="3" height="10" rx="1" fill="#8f4a33"/></svg><span class="brand-name" lang="en">What Was There Before</span>
+    </a>
+    <div class="lang-switch" role="group" data-i18n-aria="langLabel" aria-label="Sprache">
+      <button type="button" data-set-lang="de" lang="de" aria-pressed="true">Deutsch</button>
+      <button type="button" data-set-lang="en" lang="en" aria-pressed="false">English</button>
+    </div>
+  </header>
+
+  <main>
+  <article class="doc">
+
+    <h1 class="doc-title"><span data-lang="de">Datenschutz</span><span data-lang="en">Privacy</span></h1>
+    <p class="doc-sub">
+      <span data-lang="de">Stand: Version <span data-site="version">1.0.0</span>, <span data-site="versionDate">2026-10-05</span></span>
+      <span data-lang="en">As of version <span data-site="version">1.0.0</span>, <span data-site="versionDate">2026-10-05</span></span>
+    </p>
+
+    <section id="datenschutz">
+      <div data-lang="de">
+        <h2 id="kurz">Kurz gesagt</h2>
+        <p>
+          Was du schreibst, bleibt in deinem Browser. Das Werk speichert nichts, sendet nichts,
+          setzt keine Cookies und verwendet keine Analyse-Werkzeuge.
+        </p>
+
+        <h3>Im Werk</h3>
+        <p>
+          Das Werk läuft vollständig in deinem Browser. Dein Text, die Zeitpunkte der Anschläge,
+          Pausen, Löschungen und die Mausspur (nur solange der Zeiger über dem Schreibfeld ist)
+          werden ausschliesslich im Arbeitsspeicher deines Browsers verarbeitet. Sie werden weder an
+          einen Server übertragen noch auf deinem Gerät gespeichert. Beim Neuladen, beim Schliessen
+          der Seite oder mit &laquo;Neu starten&raquo; sind sie gelöscht. Exportierte Bilder erzeugt dein
+          Browser direkt auf deinem Gerät.
+        </p>
+
+        <h3>Keine Cookies, kein Tracking, keine Drittanbieter</h3>
+        <p>
+          Diese Website setzt keine Cookies und nutzt keinen lokalen Browserspeicher. Es gibt keine
+          Analyse- oder Werbedienste, keine Social-Media-Plugins und keine eingebetteten Inhalte;
+          Schriften und Skripte werden nicht von fremden Servern geladen. Die gewählte Sprache steht
+          nur in der Adresse der Seite (<code>?lang=en</code>). Verweise auf andere Websites (etwa
+          Literaturangaben, das Code-Repositorium oder das Archiv der DOI) sind gewöhnliche Links:
+          Erst wenn du sie anklickst, gelten die Datenschutzbestimmungen der jeweiligen Anbieter.
+        </p>
+
+        <h3>Server-Protokolle</h3>
+        <p>
+          Beim Aufruf der Website verarbeitet der Hosting-Anbieter technisch notwendige Zugriffsdaten
+          in Protokolldateien: IP-Adresse, Datum und Uhrzeit, aufgerufene Datei, übertragene
+          Datenmenge, Browser und Betriebssystem sowie die zuvor besuchte Seite. Dies dient der
+          Auslieferung und der Sicherheit der Website. Die Daten werden nicht mit anderen Daten
+          zusammengeführt, nicht für Auswertungen genutzt und nach der beim Anbieter üblichen Frist
+          gelöscht. Hosting: <span data-site="host"></span>.
+        </p>
+
+        <h3>Kontakt per E-Mail</h3>
+        <p>
+          Wenn du eine E-Mail schreibst, werden deine Angaben nur zur Beantwortung deiner Anfrage
+          verwendet und nicht weitergegeben.
+        </p>
+
+        <h3>Verantwortlich und deine Rechte</h3>
+        <p>
+          Verantwortlich ist <span data-site="author">Adrian Regez</span>,
+          <a href="mailto:contact@whatwastherebefore.com" data-mail>contact@whatwastherebefore.com</a>.
+          Du kannst jederzeit Auskunft über deine Daten verlangen sowie deren Berichtigung oder Löschung.
+          Beschwerden kannst du beim Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten
+          (EDÖB) einreichen, aus der EU bei der zuständigen Aufsichtsbehörde. Rechtsgrundlagen sind
+          das Schweizer Datenschutzgesetz (DSG) sowie, soweit anwendbar, die DSGVO (Art. 6 Abs. 1
+          lit. f: berechtigtes Interesse an einem sicheren Betrieb der Website).
+        </p>
+      </div>
+
+      <div data-lang="en">
+        <h2 id="in-short">In short</h2>
+        <p>
+          What you write stays in your browser. The work stores nothing, sends nothing, sets no
+          cookies and uses no analytics.
+        </p>
+
+        <h3>Within the work</h3>
+        <p>
+          The work runs entirely in your browser. Your text, the timing of keystrokes, pauses,
+          deletions and the mouse trail (only while the pointer is over the writing field) are
+          processed solely in your browser&rsquo;s memory. They are neither sent to a server nor saved
+          on your device. Reloading, closing the page or &ldquo;Start over&rdquo; deletes them. Exported
+          images are created by your browser directly on your device.
+        </p>
+
+        <h3>No cookies, no tracking, no third parties</h3>
+        <p>
+          This website sets no cookies and uses no local browser storage. There are no analytics or
+          advertising services, no social media plugins and no embedded content; fonts and scripts
+          are not loaded from third-party servers. The chosen language is kept only in the page
+          address (<code>?lang=en</code>). Links to other websites (such as references, the code
+          repository or the DOI archive) are ordinary links: only when you click them do the privacy
+          policies of the respective providers apply.
+        </p>
+
+        <h3>Server logs</h3>
+        <p>
+          When you visit the website, the hosting provider processes technically necessary access
+          data in log files: IP address, date and time, requested file, amount of data transferred,
+          browser and operating system, and the previously visited page. This serves to deliver the
+          website and keep it secure. The data is not combined with other data, not analysed and is
+          deleted after the provider&rsquo;s usual retention period. Hosting: <span data-site="host"></span>.
+        </p>
+
+        <h3>Contact by email</h3>
+        <p>
+          If you send an email, your details are used only to answer your enquiry and are not passed on.
+        </p>
+
+        <h3>Controller and your rights</h3>
+        <p>
+          The controller is <span data-site="author">Adrian Regez</span>,
+          <a href="mailto:contact@whatwastherebefore.com" data-mail>contact@whatwastherebefore.com</a>.
+          You may request information about your data at any time, as well as its correction or deletion.
+          Complaints can be lodged with the Swiss Federal Data Protection and Information Commissioner
+          (FDPIC) or, from the EU, with the competent supervisory authority. The legal bases are the
+          Swiss Federal Act on Data Protection (FADP) and, where applicable, the GDPR (Art. 6(1)(f):
+          legitimate interest in the secure operation of the website).
+        </p>
+      </div>
+    </section>
+
+  </article>
+  </main>
+
+  <footer class="site-foot">
+    <nav class="foot-nav" data-i18n-aria="footNavLabel" aria-label="Weitere Seiten">
+      <a href="about.html" data-internal="about.html"><span data-lang="de">Über das Projekt</span><span data-lang="en">About the project</span></a>
+      <a href="research.html" data-internal="research.html"><span data-lang="de">Forschung &amp; Zitieren</span><span data-lang="en">Research &amp; citation</span></a>
+      <a href="privacy.html" data-internal="privacy.html"><span data-lang="de">Datenschutz</span><span data-lang="en">Privacy</span></a>
+      <a href="legal.html" data-internal="legal.html"><span data-lang="de">Impressum &amp; Kontakt</span><span data-lang="en">Legal notice &amp; contact</span></a>
+    </nav>
+    <p class="foot-meta">
+      <span>&copy; <span data-site="year">2026</span> <span data-site="author">Adrian Regez</span></span>
+      <span><a href="research.html#versionen" data-internal="research.html#versionen">Version <span data-site="version">1.0.0</span></a></span>
+      <span><a href="mailto:contact@whatwastherebefore.com" data-mail>contact@whatwastherebefore.com</a></span>
+      <span data-when="repo" hidden><a href="#" data-site-href="repo" rel="noopener">GitHub</a></span>
+      <span data-when="doi" hidden><a href="#" data-site-href="doi" rel="noopener">DOI <span data-site="doi"></span></a></span>
+    </p>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

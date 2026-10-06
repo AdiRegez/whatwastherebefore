@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>/* Sprache vor dem ersten Zeichnen setzen (verhindert Aufflackern) und
+     kanonische Adresse je Sprache angeben (Deutsch und Englisch werden getrennt indexiert) */
+    (function () {
+      var en = /[?&]lang=en(&|$)/.test(location.search);
+      if (en) document.documentElement.lang = "en";
+      var l = document.createElement("link");
+      l.rel = "canonical"; l.href = "https://whatwastherebefore.com/research.html" + (en ? "?lang=en" : "");
+      document.head.appendChild(l);
+    })();</script>
+  <title>Forschung und Zitieren – What Was There Before</title>
+  <meta name="description" content="What Was There Before in Forschung und Lehre: Zitiervorschlag, DOI, Quellcode, Lizenz und Versionen." />
+  <meta name="author" content="Adrian Regez" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="alternate" hreflang="de" href="https://whatwastherebefore.com/research.html" />
+  <link rel="alternate" hreflang="en" href="https://whatwastherebefore.com/research.html?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://whatwastherebefore.com/research.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="What Was There Before" />
+  <meta property="og:title" content="Forschung und Zitieren – What Was There Before" />
+  <meta property="og:description" content="What Was There Before in Forschung und Lehre: Zitiervorschlag, DOI, Quellcode, Lizenz und Versionen." />
+  <meta property="og:url" content="https://whatwastherebefore.com/research.html" />
+  <meta property="og:image" content="https://whatwastherebefore.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="What Was There Before – ein Palimpsest des Schreibens" />
+  <meta property="og:locale" content="de_CH" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#f4f1eb" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="research" class="page-info">
+
+  <header class="site-head">
+    <a class="brand" href="./" data-internal="./" data-i18n-aria="homeLabel" aria-label="What Was There Before – zum Werk">
+      <svg class="brand-mark" viewBox="9 6 47 54" aria-hidden="true" focusable="false"><rect x="24" y="8" width="30" height="36" rx="3" fill="#d2cbbf"/><rect x="17" y="15" width="30" height="36" rx="3" fill="#b2a795"/><rect x="11.5" y="22.5" width="29" height="35" rx="2.5" fill="#fbfaf6" stroke="#1b1a17" stroke-width="3"/><rect x="17" y="32" width="18" height="4" rx="1" fill="#1b1a17"/><rect x="17" y="41" width="10" height="4" rx="1" fill="#1b1a17"/><rect x="29.5" y="38.5" width="3" height="10" rx="1" fill="#8f4a33"/></svg><span class="brand-name" lang="en">What Was There Before</span>
+    </a>
+    <div class="lang-switch" role="group" data-i18n-aria="langLabel" aria-label="Sprache">
+      <button type="button" data-set-lang="de" lang="de" aria-pressed="true">Deutsch</button>
+      <button type="button" data-set-lang="en" lang="en" aria-pressed="false">English</button>
+    </div>
+  </header>
+
+  <main>
+  <article class="doc">
+
+    <h1 class="doc-title"><span data-lang="de">Forschung und Zitieren</span><span data-lang="en">Research and citation</span></h1>
+    <p class="doc-sub">
+      <span data-lang="de">Das Werk in Forschung und Lehre nutzen, zitieren und weiterverwenden</span>
+      <span data-lang="en">Using, citing and reusing the work in research and teaching</span>
+    </p>
+
+    <nav class="toc" data-i18n-aria="tocLabel" aria-label="Inhalt dieser Seite">
+      <a href="#forschung"><span data-lang="de">Für Forschende</span><span data-lang="en">For researchers</span></a>
+      <a href="#zitieren"><span data-lang="de">Zitieren</span><span data-lang="en">How to cite</span></a>
+      <a href="#quellcode"><span data-lang="de">Quellcode und Archiv</span><span data-lang="en">Source code and archive</span></a>
+      <a href="#lizenz"><span data-lang="de">Lizenz</span><span data-lang="en">Licence</span></a>
+      <a href="#versionen"><span data-lang="de">Versionen</span><span data-lang="en">Versions</span></a>
+    </nav>
+
+
+    <!-- ============================ FORSCHUNG ============================ -->
+    <section id="forschung">
+      <h2><span data-lang="de">Für Forschende</span><span data-lang="en">For researchers</span></h2>
+      <div data-lang="de">
+        <p>
+          Das Werk steht der Forschung offen &ndash; etwa in der Schreibforschung und
+          Schreibdidaktik, der Kunst- und Medienpädagogik, der ästhetischen Bildung oder der
+          Mensch-Computer-Interaktion. Mögliche Fragen: Wie verändert das Sehen der eigenen
+          Schreibspur die Reflexion über das Schreiben? Welche ästhetischen Erfahrungen löst das
+          Werk aus? Wie bewegen sich Schreibende durch den Raum ihrer eigenen Zeit?
+        </p>
+        <p>
+          Wenn du das Werk in einem Forschungs- oder Lehrprojekt nutzen möchtest, freue ich mich über
+          eine kurze Nachricht mit Fragestellung, Kontext, Institution und Zeitraum an
+          <a href="mailto:contact@whatwastherebefore.com" data-mail>contact@whatwastherebefore.com</a>.
+          Mit deinem Einverständnis wird das Vorhaben hier aufgeführt und die daraus entstehenden
+          Publikationen werden verlinkt.
+        </p>
+        <p class="small">
+          Gut zu wissen: Das Werk überträgt keine Daten. Ein Export der Rohdaten (Anschläge, Zeiten,
+          Mauspositionen) ist derzeit nicht eingebaut; für Forschungsvorhaben kann eine angepasste
+          Fassung besprochen werden. Werden Teilnehmende einbezogen, liegen Einwilligung, Ethik und
+          Datenschutz in der Verantwortung der Forschenden.
+        </p>
+        <h3>Vorhaben und Publikationen</h3>
+        <p class="empty-state">Noch keine Einträge. Dein Vorhaben kann das erste sein.</p>
+      </div>
+      <div data-lang="en">
+        <p>
+          The work is open to research &ndash; for instance in writing research and writing pedagogy,
+          art and media education, aesthetic education or human-computer interaction. Possible
+          questions: How does seeing one&rsquo;s own writing trace change reflection on writing? What
+          aesthetic experiences does the work evoke? How do writers move through the space of their own time?
+        </p>
+        <p>
+          If you would like to use the work in a research or teaching project, I would be glad to
+          receive a short message describing your question, context, institution and time frame at
+          <a href="mailto:contact@whatwastherebefore.com" data-mail>contact@whatwastherebefore.com</a>.
+          With your consent, the project will be listed here and resulting publications will be linked.
+        </p>
+        <p class="small">
+          Good to know: the work transmits no data. An export of raw data (keystrokes, timings, mouse
+          positions) is not currently built in; an adapted version can be discussed for research
+          projects. Where participants are involved, consent, ethics and data protection are the
+          responsibility of the researchers.
+        </p>
+        <h3>Projects and publications</h3>
+        <p class="empty-state">No entries yet. Yours could be the first.</p>
+      </div>
+    </section>
+
+
+    <!-- ============================= ZITIEREN ============================= -->
+    <section id="zitieren">
+      <h2><span data-lang="de">Zitieren</span><span data-lang="en">How to cite</span></h2>
+      <p>
+        <span data-lang="de">Wenn du dich auf das Werk beziehst, nenne bitte Urheber, Titel, Version und <span data-when="doi" hidden>DOI</span><span data-when="!doi">Adresse</span>. Ein Vorschlag nach APA (7. Auflage):</span>
+        <span data-lang="en">When referring to the work, please give the author, title, version and <span data-when="doi" hidden>DOI</span><span data-when="!doi">address</span>. A suggestion in APA style (7th edition):</span>
+      </p>
+      <div class="cite-block">
+        <p id="citeText" class="cite-text">Regez, A. (2026). <i>What Was There Before / Was vorher da war</i> (Version 1.0.0) [Interaktive Webanwendung]. https://whatwastherebefore.com</p>
+        <button type="button" class="btn" data-copy="citeText"><span class="copy-label" data-i18n="copy">Kopieren</span></button>
+      </div>
+      <div class="cite-block">
+        <pre id="citeBib"></pre>
+        <button type="button" class="btn" data-copy="citeBib"><span class="copy-label" data-i18n="copy">Kopieren</span></button>
+      </div>
+      <dl class="facts" data-when="doi" hidden>
+        <dt>DOI</dt>
+        <dd><a href="#" data-site-href="doi" rel="noopener">https://doi.org/<span data-site="doi"></span></a></dd>
+      </dl>
+    </section>
+
+
+    <!-- ========================= QUELLCODE UND ARCHIV ========================= -->
+    <section id="quellcode">
+      <h2><span data-lang="de">Quellcode und Archiv</span><span data-lang="en">Source code and archive</span></h2>
+      <div data-lang="de">
+        <p data-when="repo" hidden>
+          Der vollständige Quellcode ist öffentlich einsehbar. Dort lassen sich auch frühere Versionen
+          nachvollziehen und Fehler melden:
+          <a href="#" data-site-href="repo" rel="noopener"><span data-site="repo"></span></a>
+        </p>
+        <p data-when="!repo">
+          Der Quellcode steht unter der MIT-Lizenz und wird in einem öffentlichen Repositorium
+          zugänglich gemacht.
+        </p>
+        <p data-when="doi" hidden>
+          Jede veröffentlichte Version wird dauerhaft archiviert und ist über eine DOI zitierbar. Die DOI
+          <a href="#" data-site-href="doi" rel="noopener"><span data-site="doi"></span></a> führt immer
+          zur neuesten Version; von dort sind auch alle früheren Versionen erreichbar.
+        </p>
+      </div>
+      <div data-lang="en">
+        <p data-when="repo" hidden>
+          The complete source code is publicly available. Earlier versions can be traced and issues
+          reported there:
+          <a href="#" data-site-href="repo" rel="noopener"><span data-site="repo"></span></a>
+        </p>
+        <p data-when="!repo">
+          The source code is released under the MIT licence and will be made available in a public
+          repository.
+        </p>
+        <p data-when="doi" hidden>
+          Every published version is permanently archived and citable via a DOI. The DOI
+          <a href="#" data-site-href="doi" rel="noopener"><span data-site="doi"></span></a> always
+          resolves to the latest version; all earlier versions can be reached from there.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ============================== LIZENZ ============================== -->
+    <section id="lizenz">
+      <h2><span data-lang="de">Lizenz</span><span data-lang="en">Licence</span></h2>
+      <div data-lang="de">
+        <p>
+          Idee, Konzept und Umsetzung stammen von <span data-site="author">Adrian Regez</span>.
+        </p>
+        <ul>
+          <li><em>Programmcode</em> (HTML, CSS, JavaScript): MIT-Lizenz. Er darf genutzt, verändert
+            und weitergegeben werden, sofern der Urheberrechtsvermerk und der Lizenztext erhalten
+            bleiben (siehe <a href="LICENSE.txt">LICENSE.txt</a>).</li>
+          <li><em>Texte und Abbildungen dieser Website:</em>
+            <a href="https://creativecommons.org/licenses/by/4.0/deed.de" rel="license noopener">Creative Commons Namensnennung 4.0 International (CC BY 4.0)</a>
+            &ndash; Weiterverwendung mit Nennung von Urheber, Titel und Adresse.</li>
+          <li><em>Was du mit dem Werk schreibst und exportierst, gehört dir.</em></li>
+        </ul>
+      </div>
+      <div data-lang="en">
+        <p>
+          Idea, concept and realisation by <span data-site="author">Adrian Regez</span>.
+        </p>
+        <ul>
+          <li><em>Source code</em> (HTML, CSS, JavaScript): MIT licence. It may be used, modified and
+            shared as long as the copyright notice and licence text are kept
+            (see <a href="LICENSE.txt">LICENSE.txt</a>).</li>
+          <li><em>Texts and images on this website:</em>
+            <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>
+            &ndash; reuse with credit to the author, title and address.</li>
+          <li><em>What you write and export with the work belongs to you.</em></li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ============================= VERSIONEN ============================= -->
+    <section id="versionen">
+      <h2><span data-lang="de">Versionen</span><span data-lang="en">Versions</span></h2>
+      <p>
+        <span data-lang="de">Aktuell: Version <span data-site="version">1.0.0</span>. Kleine Korrekturen erhöhen die letzte Stelle, neue Funktionen die mittlere, grundlegende Änderungen die erste. Wer das Werk zitiert, gibt die Version an.</span>
+        <span data-lang="en">Current: version <span data-site="version">1.0.0</span>. Small fixes raise the last number, new features the middle one, fundamental changes the first. Please state the version when citing the work.</span>
+      </p>
+      <h3>1.0.0 &ndash; <span data-site="versionDate">2026-10-05</span></h3>
+      <p>
+        <span data-lang="de">Erstveröffentlichung: Aufzeichnung von Tempo, Pausen, Löschungen und Ergänzungen; Palimpsest als Komposition und als navigierbarer Raum; Rubrik-Farbe für nachträgliche Ergänzungen; Mausspur (Bewegung, Verweilen, Klicks) im Textraum; Export als SVG, PNG und JPG; Deutsch und Englisch.</span>
+        <span data-lang="en">First release: recording of tempo, pauses, deletions and additions; palimpsest as composition and as navigable space; rubric colour for later additions; mouse trail (movement, resting, clicks) in text space; export as SVG, PNG and JPG; German and English.</span>
+      </p>
+    </section>
+
+  </article>
+  </main>
+
+  <footer class="site-foot">
+    <nav class="foot-nav" data-i18n-aria="footNavLabel" aria-label="Weitere Seiten">
+      <a href="about.html" data-internal="about.html"><span data-lang="de">Über das Projekt</span><span data-lang="en">About the project</span></a>
+      <a href="research.html" data-internal="research.html"><span data-lang="de">Forschung &amp; Zitieren</span><span data-lang="en">Research &amp; citation</span></a>
+      <a href="privacy.html" data-internal="privacy.html"><span data-lang="de">Datenschutz</span><span data-lang="en">Privacy</span></a>
+      <a href="legal.html" data-internal="legal.html"><span data-lang="de">Impressum &amp; Kontakt</span><span data-lang="en">Legal notice &amp; contact</span></a>
+    </nav>
+    <p class="foot-meta">
+      <span>&copy; <span data-site="year">2026</span> <span data-site="author">Adrian Regez</span></span>
+      <span><a href="research.html#versionen" data-internal="research.html#versionen">Version <span data-site="version">1.0.0</span></a></span>
+      <span><a href="mailto:contact@whatwastherebefore.com" data-mail>contact@whatwastherebefore.com</a></span>
+      <span data-when="repo" hidden><a href="#" data-site-href="repo" rel="noopener">GitHub</a></span>
+      <span data-when="doi" hidden><a href="#" data-site-href="doi" rel="noopener">DOI <span data-site="doi"></span></a></span>
+    </p>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

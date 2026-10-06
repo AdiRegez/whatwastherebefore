@@ -1,0 +1,616 @@
+/* ============================================================
+   What Was There Before
+   Gestaltung: Tinte auf Papier. Die Seite ist ruhig; nur der
+   Titel und das Werk selbst tragen die Idee der Schichtung.
+   ============================================================ */
+
+:root {
+  --paper:      #f4f1eb;   /* gealtertes Archivpapier (Werkfläche) */
+  --sheet:      #fbfaf6;   /* frisches Blatt (Schreiben, Endtext)  */
+  --ink:        #1b1a17;   /* warme, dunkle Tinte                  */
+  --ink-soft:   #4a453d;   /* Nebentext                            */
+  --sepia:      #7c6a4f;   /* Alterung der Vergangenheit           */
+  --faint:      #b3ab9c;   /* Hilfslinien, Legende                 */
+  --hairline:   #d9d3c6;   /* feine Ränder                         */
+  --measure:    700px;     /* Textbreite – identisch zum Layout    */
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  max-width: calc(var(--measure) + 120px);
+  margin: 0 auto;
+  padding: 64px 30px 120px;
+}
+
+.hidden { display: none; }
+
+em { font-style: italic; }
+
+
+/* ---------------- Intro / Hero ---------------- */
+
+#intro {
+  max-width: var(--measure);
+  margin: 12vh auto 0;
+}
+
+.kicker {
+  font-size: 15px;
+  font-style: italic;
+  color: var(--sepia);
+  margin: 0 0 22px;
+  letter-spacing: 0.01em;
+}
+
+/* Der Titel selbst ist ein kleines Palimpsest: zwei blasse,
+   nach hinten-oben versetzte Geister-Fassungen liegen dahinter. */
+.title {
+  position: relative;
+  z-index: 0;
+  margin: 0 0 40px;
+  font-size: clamp(44px, 8vw, 78px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  isolation: isolate;
+}
+.title::before,
+.title::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  color: var(--sepia);
+  pointer-events: none;
+}
+.title::before {          /* tiefste Schicht: am weitesten weg, am blassesten */
+  transform: translate(20px, -15px) scale(0.985);
+  opacity: 0.15;
+  filter: blur(1.1px);
+  animation: ghostDeep 1000ms cubic-bezier(.2,.7,.2,1) both;
+}
+.title::after {           /* nähere Schicht */
+  transform: translate(10px, -8px) scale(0.992);
+  opacity: 0.26;
+  filter: blur(0.5px);
+  animation: ghostNear 1000ms cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes ghostDeep {
+  from { transform: translate(0,0) scale(1); opacity: 0; }
+  to   { transform: translate(20px,-15px) scale(0.985); opacity: 0.15; }
+}
+@keyframes ghostNear {
+  from { transform: translate(0,0) scale(1); opacity: 0; }
+  to   { transform: translate(10px,-8px) scale(0.992); opacity: 0.26; }
+}
+
+.intro-copy p {
+  font-size: 20px;
+  color: var(--ink);
+  margin: 0 0 20px;
+  max-width: 62ch;
+}
+.intro-copy .prompt {
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-top: 30px;
+}
+
+
+/* ---------------- Buttons ---------------- */
+
+.btn {
+  font-family: inherit;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  padding: 13px 26px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 1px;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+.btn:hover { background: var(--ink); color: var(--sheet); }
+.btn:focus-visible { outline: 2px solid var(--sepia); outline-offset: 3px; }
+
+.btn-primary { margin-top: 44px; padding: 15px 34px; font-size: 16px; }
+
+.btn-quiet {
+  border-color: var(--hairline);
+  color: var(--ink-soft);
+}
+.btn-quiet:hover { background: var(--ink-soft); color: var(--sheet); border-color: var(--ink-soft); }
+
+
+/* ---------------- Schreiben ---------------- */
+
+#writingSection { max-width: calc(var(--measure) + 60px); margin: 4vh auto 0; }
+
+.write-hint {
+  font-size: 15px;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0 0 18px 2px;
+}
+
+#editor {
+  display: block;
+  width: 100%;
+  min-height: 58vh;
+  padding: 40px 42px;
+  border: 1px solid var(--hairline);
+  border-radius: 2px;
+  background: var(--sheet);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  line-height: 1.62;
+  resize: vertical;
+  outline: none;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 18px 40px -34px rgba(0,0,0,0.4);
+}
+#editor::placeholder { color: #bcb6a8; font-style: italic; }
+#editor:focus { border-color: var(--sepia); }
+
+.write-actions { margin-top: 28px; }
+
+
+/* ---------------- Ergebnis ---------------- */
+
+#resultSection { max-width: calc(var(--measure) + 60px); margin: 0 auto; }
+
+.section-head {
+  font-size: 26px;
+  font-weight: 400;
+  margin: 0 0 22px;
+  letter-spacing: -0.005em;
+}
+.section-head--spaced { margin-top: 92px; }
+
+.caption {
+  font-size: 16px;
+  font-style: italic;
+  color: var(--sepia);
+  margin: 0 0 26px;
+  max-width: 60ch;
+}
+
+.sheet {
+  background: var(--sheet);
+  border: 1px solid var(--hairline);
+  border-radius: 2px;
+  padding: 40px 42px;
+  font-size: 26px;
+  line-height: 1.62;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  box-shadow: 0 18px 40px -36px rgba(0,0,0,0.4);
+}
+.sheet:empty::after {
+  content: "—";
+  color: var(--faint);
+}
+
+/* Die Werkfläche: gealtertes Papier, in das die Zeit eingeschrieben ist. */
+.viz {
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 2px;
+  padding: 8px;
+  overflow: auto;
+  box-shadow: inset 0 0 0 1px rgba(124,106,79,0.05), 0 22px 50px -40px rgba(0,0,0,0.45);
+}
+.viz svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: vizIn 700ms ease both;
+}
+@keyframes vizIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+/* ---------------- Steuerung ---------------- */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 26px;
+  margin: 26px 2px 0;
+  padding-top: 22px;
+  border-top: 1px solid var(--hairline);
+}
+.control { display: flex; align-items: center; gap: 12px; }
+.control label,
+.check span {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 150px;
+  height: 2px;
+  background: var(--hairline);
+  border-radius: 2px;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px; height: 15px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 15px; height: 15px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+}
+
+.check { display: inline-flex; align-items: center; gap: 9px; cursor: pointer; }
+.check input { width: 15px; height: 15px; accent-color: var(--ink); }
+
+
+/* ---------------- Export ---------------- */
+
+.export {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 34px;
+}
+.export-label {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-right: 6px;
+}
+.export .btn { padding: 10px 20px; font-size: 14px; }
+
+.restart { margin-top: 56px; }
+.restart .btn { padding: 11px 22px; font-size: 14px; }
+
+
+/* ---------------- Ansichts-Umschalter (flach / Raum) ---------------- */
+
+.viewmode {
+  display: inline-flex;
+  margin: 0 0 14px;
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.mode-btn {
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  padding: 9px 18px;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease;
+}
+.mode-btn + .mode-btn { border-left: 1px solid var(--hairline); }
+.mode-btn:hover { color: var(--ink); }
+.mode-btn.is-active { background: var(--ink); color: var(--sheet); }
+.mode-btn:focus-visible { outline: 2px solid var(--sepia); outline-offset: -2px; }
+
+/* Die Werkfläche im Raum-Modus: Ziehfläche, keine Einblend-Animation
+   (die würde bei jeder Kamerabewegung neu flackern). */
+.viz--space {
+  cursor: grab;
+  touch-action: none;           /* Touch-Gesten steuern die Kamera, nicht die Seite */
+}
+.viz--space:active { cursor: grabbing; }
+.viz--space svg { animation: none; }
+
+
+/* ---------------- 3D-Bedienpanel ---------------- */
+
+.controls3d { margin-top: 26px; }
+
+.views {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.views-label {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-right: 4px;
+}
+.view-btn { padding: 8px 16px; font-size: 13px; }
+
+.nav-hint {
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--faint);
+  margin: 14px 2px 0;
+  line-height: 1.5;
+}
+
+.snapshot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hairline);
+}
+.snapshot-label {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-right: 6px;
+}
+.snapshot .btn { padding: 10px 20px; font-size: 14px; }
+
+
+/* ---------------- Klein / mobil ---------------- */
+
+@media (max-width: 620px) {
+  main { padding: 40px 20px 90px; }
+  #intro { margin-top: 8vh; }
+  .intro-copy p { font-size: 18px; }
+  #editor { padding: 26px 22px; font-size: 22px; }
+  .sheet { padding: 26px 22px; font-size: 22px; }
+  .section-head--spaced { margin-top: 64px; }
+  .controls { gap: 18px; }
+  input[type="range"] { width: 120px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title::before { animation: none; }
+  .title::after  { animation: none; }
+  .viz svg { animation: none; }
+}
+
+
+/* ============================================================
+   Mehrsprachigkeit, Kopf- und Fusszeile, Infoseite
+   ============================================================ */
+
+/* Nur die aktive Sprache zeigen (Standard: Deutsch) */
+html[lang="de"] [data-lang="en"],
+html[lang="en"] [data-lang="de"] { display: none !important; }
+
+[hidden] { display: none !important; }
+
+a { color: inherit; text-decoration-color: var(--faint); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-color: var(--ink); }
+a:focus-visible,
+.lang-switch button:focus-visible { outline: 2px solid var(--sepia); outline-offset: 3px; border-radius: 1px; }
+
+
+/* ---------------- Kopfzeile ---------------- */
+
+.site-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 26px;
+  width: calc(100% - 60px);
+  max-width: calc(var(--measure) + 60px);
+  margin: 0 auto;
+  padding: 20px 0 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+/* Bildmarke: drei versetzte Blätter – das Palimpsest im Kleinen */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.brand-mark { display: block; width: 20px; height: 23px; flex: none; }
+.brand-name { font-size: 15px; letter-spacing: 0.005em; }
+.brand:hover .brand-name { text-decoration: underline; text-decoration-color: var(--faint); }
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  margin-left: auto;
+}
+.site-nav a { font-style: italic; text-decoration: none; padding: 2px 0; border-bottom: 1px solid transparent; }
+.site-nav a:hover { color: var(--ink); border-bottom-color: var(--faint); }
+.site-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
+
+.lang-switch { display: inline-flex; gap: 14px; margin-left: auto; }
+.lang-switch button {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 2px 0;
+  border: none;
+  border-bottom: 1px solid transparent;
+  background: none;
+  color: var(--faint);
+  cursor: pointer;
+}
+.lang-switch button:hover { color: var(--ink-soft); }
+.lang-switch button.is-active { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* Beim Schreiben tritt alles zurück, was ablenken oder wegführen könnte */
+body[data-stage="writing"] .brand,
+body[data-stage="writing"] .site-nav { visibility: hidden; }
+body[data-stage="writing"] .site-foot { display: none; }
+
+
+/* ---------------- Hinweise im Werk ---------------- */
+
+.privacy-note {
+  margin: 26px 0 0;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--sepia);
+  max-width: 62ch;
+}
+.privacy-note a { margin-left: 4px; color: var(--ink-soft); }
+
+.export-note {
+  margin: 22px 2px 0;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--faint);
+}
+
+
+/* ---------------- Fusszeile ---------------- */
+
+.site-foot {
+  width: calc(100% - 60px);
+  max-width: calc(var(--measure) + 60px);
+  margin: 0 auto;
+  padding: 26px 0 48px;
+  border-top: 1px solid var(--hairline);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.foot-nav { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 12px; }
+.foot-meta { display: flex; flex-wrap: wrap; gap: 4px 0; margin: 0; color: var(--faint); font-size: 13px; }
+.foot-meta a { color: var(--faint); }
+.foot-meta a:hover { color: var(--ink-soft); }
+.foot-meta > span:not([hidden]) ~ span:not([hidden])::before { content: "\00b7"; margin: 0 10px; }
+
+main + .site-foot { margin-top: -40px; }
+
+
+/* ---------------- Infoseite ---------------- */
+
+.page-info main { padding-top: 40px; }
+.page-info .doc { margin: 0 auto 0 0; }
+.page-info .site-foot { margin-top: 0; }
+
+.doc { max-width: 66ch; }
+
+.doc-title {
+  font-size: clamp(34px, 5.5vw, 48px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 4vh 0 10px;
+}
+.doc-sub {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--sepia);
+  margin: 0 0 40px;
+}
+
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin: 0 0 56px;
+  padding: 16px 0;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  font-size: 15px;
+}
+
+.doc section { margin: 0 0 64px; scroll-margin-top: 24px; }
+.doc h2 {
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  margin: 0 0 18px;
+}
+.doc h3 {
+  font-size: 19px;
+  font-weight: 400;
+  font-style: italic;
+  margin: 30px 0 10px;
+}
+.doc p, .doc li { font-size: 18px; line-height: 1.66; }
+.doc p { margin: 0 0 16px; }
+.doc ul, .doc ol { margin: 0 0 18px; padding-left: 1.3em; }
+.doc li { margin: 0 0 8px; }
+.doc li::marker { color: var(--sepia); }
+.doc .small { font-size: 15px; color: var(--ink-soft); }
+
+.related li { margin-bottom: 12px; }
+.related .who { font-style: italic; }
+.related .who i { font-style: normal; }
+
+/* Literaturverzeichnis: hängender Einzug wie im Manuskript (APA) */
+.refs { list-style: none; padding-left: 0; }
+.doc .refs li {
+  font-size: 15.5px;
+  line-height: 1.55;
+  padding-left: 2em;
+  text-indent: -2em;
+  margin: 0 0 10px;
+  overflow-wrap: anywhere;
+}
+.refs a { color: var(--ink-soft); }
+
+.cite-block {
+  position: relative;
+  margin: 0 0 18px;
+  padding: 18px 20px;
+  background: var(--sheet);
+  border: 1px solid var(--hairline);
+  border-radius: 2px;
+}
+.cite-block pre,
+.cite-block .cite-text {
+  margin: 0 0 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.cite-block pre { font-family: "Courier New", Courier, monospace; font-size: 13.5px; }
+.cite-block .btn { padding: 7px 16px; font-size: 13px; }
+
+.empty-state {
+  font-style: italic;
+  color: var(--sepia);
+  padding: 14px 0;
+  border-top: 1px dashed var(--hairline);
+  border-bottom: 1px dashed var(--hairline);
+}
+
+.facts { margin: 0 0 18px; }
+.facts dt { font-size: 15px; font-style: italic; color: var(--ink-soft); margin-top: 12px; }
+.facts dd { margin: 2px 0 0; font-size: 18px; }
+
+@media (max-width: 620px) {
+  .site-head { width: calc(100% - 40px); padding-top: 16px; gap: 10px 18px; }
+  .site-nav { order: 3; width: 100%; margin-left: 0; gap: 4px 18px; }
+  .lang-switch { margin-left: auto; }
+  .site-foot { width: calc(100% - 40px); padding: 22px 0 40px; }
+  .doc p, .doc li { font-size: 17px; }
+}
+
+@media print {
+  .site-head, .site-foot, .toc, .cite-block .btn { display: none; }
+}

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>/* Sprache vor dem ersten Zeichnen setzen (verhindert Aufflackern) und
+     kanonische Adresse je Sprache angeben (Deutsch und Englisch werden getrennt indexiert) */
+    (function () {
+      var en = /[?&]lang=en(&|$)/.test(location.search);
+      if (en) document.documentElement.lang = "en";
+      var l = document.createElement("link");
+      l.rel = "canonical"; l.href = "https://whatwastherebefore.com/" + (en ? "?lang=en" : "");
+      document.head.appendChild(l);
+    })();</script>
+  <title>What Was There Before – Was vorher da war</title>
+  <meta name="description" content="Ein interaktives Kunstwerk, das den Schreibprozess als Palimpsest sichtbar macht: Tempo, Pausen, Streichungen, Ergänzungen und die Spur der Maus." />
+  <meta name="author" content="Adrian Regez" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="alternate" hreflang="de" href="https://whatwastherebefore.com/" />
+  <link rel="alternate" hreflang="en" href="https://whatwastherebefore.com/?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://whatwastherebefore.com/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="What Was There Before" />
+  <meta property="og:title" content="What Was There Before – Was vorher da war" />
+  <meta property="og:description" content="Ein interaktives Kunstwerk, das den Schreibprozess als Palimpsest sichtbar macht: Tempo, Pausen, Streichungen, Ergänzungen und die Spur der Maus." />
+  <meta property="og:url" content="https://whatwastherebefore.com/" />
+  <meta property="og:image" content="https://whatwastherebefore.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="What Was There Before – ein Palimpsest des Schreibens" />
+  <meta property="og:locale" content="de_CH" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#f4f1eb" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="home" data-stage="intro">
+
+  <header class="site-head">
+    <a class="brand" href="./" data-internal="./" data-i18n-aria="homeLabel" aria-label="What Was There Before – zum Werk">
+      <svg class="brand-mark" viewBox="9 6 47 54" aria-hidden="true" focusable="false"><rect x="24" y="8" width="30" height="36" rx="3" fill="#d2cbbf"/><rect x="17" y="15" width="30" height="36" rx="3" fill="#b2a795"/><rect x="11.5" y="22.5" width="29" height="35" rx="2.5" fill="#fbfaf6" stroke="#1b1a17" stroke-width="3"/><rect x="17" y="32" width="18" height="4" rx="1" fill="#1b1a17"/><rect x="17" y="41" width="10" height="4" rx="1" fill="#1b1a17"/><rect x="29.5" y="38.5" width="3" height="10" rx="1" fill="#8f4a33"/></svg>
+    </a>
+    <div class="lang-switch" role="group" data-i18n-aria="langLabel" aria-label="Sprache">
+      <button type="button" data-set-lang="de" lang="de" aria-pressed="true">Deutsch</button>
+      <button type="button" data-set-lang="en" lang="en" aria-pressed="false">English</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ INTRO ============ -->
+    <section id="intro">
+      <p class="kicker">
+        <span data-lang="de">Was vorher da war</span><span data-lang="en">A palimpsest of writing</span>
+      </p>
+
+      <h1 class="title" data-text="What Was There Before" lang="en">What Was There Before</h1>
+
+      <div class="intro-copy">
+        <div data-lang="de">
+          <p>
+            Schreiben hinterlässt mehr als seinen fertigen Text. Während du tippst,
+            zeichnet diese Seite die Bewegung des Schreibens auf &ndash; das Zögern,
+            das Tempo, das Verworfene, den Weg der Maus.
+          </p>
+          <p>
+            Am Ende siehst du nicht nur, <em>was</em> du geschrieben hast, sondern auch,
+            was vorher da war: frühere Fassungen liegen als zeitliche Schichten hinter
+            der Oberfläche.
+          </p>
+          <p class="prompt">
+            Schreibe hier, was du möchtest &ndash; einen Gedanken, einen Brief, eine
+            Erinnerung, einen einzigen Satz.
+          </p>
+        </div>
+        <div data-lang="en">
+          <p>
+            Writing leaves behind more than its finished text. While you type, this
+            page records the movement of writing &ndash; the hesitation, the tempo,
+            what you discard, the path of the mouse.
+          </p>
+          <p>
+            In the end you see not only <em>what</em> you wrote, but also what was
+            there before: earlier versions lie as layers of time behind the surface.
+          </p>
+          <p class="prompt">
+            Write whatever you like &ndash; a thought, a letter, a memory, a single
+            sentence.
+          </p>
+        </div>
+      </div>
+
+      <button id="startButton" class="btn btn-primary">
+        <span data-lang="de">BEGINN</span><span data-lang="en">BEGIN</span>
+      </button>
+
+      <p class="privacy-note">
+        <span data-lang="de">Was du schreibst, bleibt in deinem Browser. Nichts wird gespeichert oder übertragen.</span>
+        <span data-lang="en">What you write stays in your browser. Nothing is stored or sent anywhere.</span>
+        <a href="privacy.html" data-internal="privacy.html"><span data-lang="de">Datenschutz</span><span data-lang="en">Privacy</span></a>
+      </p>
+    </section>
+
+
+    <!-- ============ SCHREIBEN ============ -->
+    <section id="writingSection" class="hidden">
+      <p class="write-hint">
+        <span data-lang="de">Schreib einfach los. Kein Timer, kein Ziel.</span>
+        <span data-lang="en">Just start writing. No timer, no goal.</span>
+      </p>
+
+      <textarea
+        id="editor"
+        spellcheck="false"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        data-i18n-placeholder="placeholder"
+        placeholder="Beginne zu schreiben …"></textarea>
+
+      <div class="write-actions">
+        <button id="finishButton" class="btn btn-primary">
+          <span data-lang="de">FERTIG</span><span data-lang="en">DONE</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ============ ERGEBNIS ============ -->
+    <section id="resultSection" class="hidden">
+
+      <h2 class="section-head">
+        <span data-lang="de">Der fertige Text</span><span data-lang="en">The finished text</span>
+      </h2>
+      <div id="finalText" class="sheet"></div>
+
+      <h2 class="section-head section-head--spaced">
+        <span data-lang="de">Die Spur des Schreibens</span><span data-lang="en">The trace of writing</span>
+      </h2>
+      <p class="caption">
+        <span data-lang="de">Der fertige Text ist die Oberfläche. Die verworfenen Fassungen bilden seine zeitliche Tiefe.</span>
+        <span data-lang="en">The finished text is the surface. The discarded versions form its temporal depth.</span>
+      </p>
+
+      <div class="viewmode" role="tablist" data-i18n-aria="viewmodeLabel" aria-label="Ansicht">
+        <button id="modeFlat" class="mode-btn is-active" type="button">
+          <span data-lang="de">Komposition</span><span data-lang="en">Composition</span>
+        </button>
+        <button id="modeSpace" class="mode-btn" type="button">
+          <span data-lang="de">Raum erkunden</span><span data-lang="en">Explore the space</span>
+        </button>
+      </div>
+
+      <div id="visualization" class="viz"></div>
+
+      <div class="controls">
+        <div class="control">
+          <label for="depthRange"><span data-lang="de">Tiefe</span><span data-lang="en">Depth</span></label>
+          <input type="range" id="depthRange" min="0.3" max="1.8" step="0.05" value="1" />
+        </div>
+        <div class="control">
+          <label for="fadeRange"><span data-lang="de">Verblassen</span><span data-lang="en">Fading</span></label>
+          <input type="range" id="fadeRange" min="0" max="100" step="1" value="40" />
+        </div>
+        <label class="check">
+          <input type="checkbox" id="showDeleted" checked />
+          <span data-lang="de">Verworfene Ebenen</span><span data-lang="en">Discarded layers</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="showLegend" checked />
+          <span data-lang="de">Achsen · Legende</span><span data-lang="en">Axes · legend</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="showMouse" checked />
+          <span data-lang="de">Mausspur</span><span data-lang="en">Mouse trail</span>
+        </label>
+      </div>
+
+      <div class="export" id="exportRow">
+        <span class="export-label"><span data-lang="de">Exportieren</span><span data-lang="en">Export</span></span>
+        <button id="exportPng" class="btn">PNG</button>
+        <button id="exportJpg" class="btn">JPG</button>
+        <button id="exportSvg" class="btn">SVG</button>
+      </div>
+
+      <div id="controls3d" class="controls3d hidden">
+        <div class="views">
+          <span class="views-label"><span data-lang="de">Blickwinkel</span><span data-lang="en">Viewpoint</span></span>
+          <button class="btn view-btn" type="button" data-view="front"><span data-lang="de">Vorne</span><span data-lang="en">Front</span></button>
+          <button class="btn view-btn" type="button" data-view="iso"><span data-lang="de">Schräg</span><span data-lang="en">Oblique</span></button>
+          <button class="btn view-btn" type="button" data-view="side"><span data-lang="de">Seite</span><span data-lang="en">Side</span></button>
+          <button class="btn view-btn" type="button" data-view="top"><span data-lang="de">Oben</span><span data-lang="en">Top</span></button>
+          <button class="btn view-btn" type="button" data-view="reset"><span data-lang="de">Zurücksetzen</span><span data-lang="en">Reset</span></button>
+        </div>
+        <p class="nav-hint">
+          <span data-lang="de">Ziehen: drehen &middot; Mausrad/Pinch: zoomen &middot;
+          Umschalt&#8202;+&#8202;Ziehen (oder zwei Finger): verschieben &middot;
+          Doppelklick: zurücksetzen</span>
+          <span data-lang="en">Drag: rotate &middot; scroll wheel/pinch: zoom &middot;
+          Shift&#8202;+&#8202;drag (or two fingers): pan &middot;
+          double-click: reset</span>
+        </p>
+        <div class="snapshot">
+          <span class="snapshot-label"><span data-lang="de">Aus dieser Ansicht sichern</span><span data-lang="en">Save this view</span></span>
+          <button id="snapSvg" class="btn">SVG</button>
+          <button id="snapPng" class="btn">PNG</button>
+          <button id="snapJpg" class="btn">JPG</button>
+        </div>
+      </div>
+
+      <p class="export-note">
+        <span data-lang="de">Exportiere dein Bild, bevor du neu startest oder die Seite schliesst &ndash; danach ist alles gelöscht.</span>
+        <span data-lang="en">Export your image before you start over or close the page &ndash; afterwards everything is gone.</span>
+      </p>
+
+      <div class="restart">
+        <button id="restartButton" class="btn btn-quiet">
+          <span data-lang="de">NEU STARTEN</span><span data-lang="en">START OVER</span>
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="site-foot">
+    <nav class="foot-nav" data-i18n-aria="footNavLabel" aria-label="Weitere Seiten">
+      <a href="about.html" data-internal="about.html"><span data-lang="de">Über das Projekt</span><span data-lang="en">About the project</span></a>
+      <a href="research.html" data-internal="research.html"><span data-lang="de">Forschung &amp; Zitieren</span><span data-lang="en">Research &amp; citation</span></a>
+      <a href="privacy.html" data-internal="privacy.html"><span data-lang="de">Datenschutz</span><span data-lang="en">Privacy</span></a>
+      <a href="legal.html" data-internal="legal.html"><span data-lang="de">Impressum &amp; Kontakt</span><span data-lang="en">Legal notice &amp; contact</span></a>
+    </nav>
+    <p class="foot-meta">
+      <span>&copy; <span data-site="year">2026</span> <span data-site="author">Adrian Regez</span></span>
+      <span><a href="research.html#versionen" data-internal="research.html#versionen">Version <span data-site="version">1.0.0</span></a></span>
+      <span><a href="mailto:contact@whatwastherebefore.com" data-mail>contact@whatwastherebefore.com</a></span>
+      <span data-when="repo" hidden><a href="#" data-site-href="repo" rel="noopener">GitHub</a></span>
+      <span data-when="doi" hidden><a href="#" data-site-href="doi" rel="noopener">DOI <span data-site="doi"></span></a></span>
+    </p>
+  </footer>
+
+  <script src="site.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

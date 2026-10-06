@@ -1,0 +1,6 @@
+# What Was There Before – https://whatwastherebefore.com
+# Alle Suchmaschinen dürfen die gesamte Website indexieren.
+User-agent: *
+Allow: /
+
+Sitemap: https://whatwastherebefore.com/sitemap.xml

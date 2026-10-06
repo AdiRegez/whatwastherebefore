@@ -1,0 +1,34 @@
+# Zitierangaben für GitHub («Cite this repository») und Zenodo (DOI).
+# Sobald DOI und Repositorium feststehen: die beiden mit «#» auskommentierten
+# Zeilen unten aktivieren (Raute entfernen) und die Werte eintragen.
+# Bei jeder neuen Version «version» und «date-released» anpassen (wie in site.js).
+
+cff-version: 1.2.0
+message: "Wenn du dich auf dieses Werk beziehst, zitiere es bitte so. / If you refer to this work, please cite it as below."
+type: software
+title: "What Was There Before / Was vorher da war"
+abstract: >-
+  An interactive artwork that makes the writing process visible as a palimpsest:
+  tempo, pauses, deletions, additions and the trail of the mouse are recorded in the
+  browser and turned into a layered image and a navigable space of time.
+authors:
+  - given-names: Adrian
+    family-names: Regez
+    email: contact@whatwastherebefore.com
+version: 1.0.0
+date-released: 2026-10-05
+url: "https://whatwastherebefore.com"
+repository-code: "https://github.com/AdiRegez/whatwastherebefore"
+# doi: 10.5281/zenodo.XXXXXXX
+license:
+  - MIT
+  - CC-BY-4.0
+keywords:
+  - writing process
+  - palimpsest
+  - keystroke logging
+  - mouse tracking
+  - media art
+  - aesthetic education
+  - Schreibprozess
+  - Medienbildung

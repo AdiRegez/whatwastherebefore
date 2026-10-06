@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://whatwastherebefore.com/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://whatwastherebefore.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://whatwastherebefore.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://whatwastherebefore.com/"/>
+    <lastmod>2026-10-05</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://whatwastherebefore.com/?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://whatwastherebefore.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://whatwastherebefore.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://whatwastherebefore.com/"/>
+    <lastmod>2026-10-05</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://whatwastherebefore.com/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://whatwastherebefore.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://whatwastherebefore.com/about.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://whatwastherebefore.com/about.html"/>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whatwastherebefore.com/about.html?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://whatwastherebefore.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://whatwastherebefore.com/about.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://whatwastherebefore.com/about.html"/>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whatwastherebefore.com/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://whatwastherebefore.com/research.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://whatwastherebefore.com/research.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://whatwastherebefore.com/research.html"/>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whatwastherebefore.com/research.html?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://whatwastherebefore.com/research.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://whatwastherebefore.com/research.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://whatwastherebefore.com/research.html"/>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whatwastherebefore.com/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://whatwastherebefore.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://whatwastherebefore.com/privacy.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://whatwastherebefore.com/privacy.html"/>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://whatwastherebefore.com/privacy.html?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://whatwastherebefore.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://whatwastherebefore.com/privacy.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://whatwastherebefore.com/privacy.html"/>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://whatwastherebefore.com/legal.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://whatwastherebefore.com/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://whatwastherebefore.com/legal.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://whatwastherebefore.com/legal.html"/>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://whatwastherebefore.com/legal.html?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://whatwastherebefore.com/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://whatwastherebefore.com/legal.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://whatwastherebefore.com/legal.html"/>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.3</priority>
+  </url>
+</urlset>
