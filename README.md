@@ -8,11 +8,11 @@ Streichungen, Ergänzungen und die Spur der Maus.
 **Repositorium / Repository:** https://github.com/AdiRegez/whatwastherebefore  
 **Idee, Konzept, Gestaltung und Programmierung:** Adrian Regez · contact@whatwastherebefore.com
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23191901.svg)](https://doi.org/10.5281/zenodo.23191901)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23191900.svg)](https://doi.org/10.5281/zenodo.23191900)
 
 ## Zitieren / How to cite
 
-Regez, A. (2026). *What Was There Before / Was vorher da war* (Version 1.0.1) [Interaktive Webanwendung]. https://doi.org/10.5281/zenodo.23191901
+Regez, A. (2026). *What Was There Before / Was vorher da war* (Version 1.0.2) [Interaktive Webanwendung]. https://doi.org/10.5281/zenodo.23191900
 
 Maschinenlesbare Angaben: [`CITATION.cff`](CITATION.cff) (GitHub zeigt dazu «Cite this repository»).
 

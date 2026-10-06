@@ -15,11 +15,11 @@ authors:
   - given-names: Adrian
     family-names: Regez
     email: contact@whatwastherebefore.com
-version: 1.0.1
+version: 1.0.2
 date-released: 2026-10-06
 url: "https://whatwastherebefore.com"
 repository-code: "https://github.com/AdiRegez/whatwastherebefore"
-doi: 10.5281/zenodo.23191901
+doi: 10.5281/zenodo.23191900
 license: MIT
 keywords:
   - writing process
