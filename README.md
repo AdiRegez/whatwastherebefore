@@ -5,16 +5,14 @@ Streichungen, Ergänzungen und die Spur der Maus.
 *An interactive artwork that makes the writing process visible as a palimpsest.*
 
 **Werk / Work:** https://whatwastherebefore.com  
-**Repositorium / Repository:** https://github.com/AdiRegez/whatwastherebefore
+**Repositorium / Repository:** https://github.com/AdiRegez/whatwastherebefore  
 **Idee, Konzept, Gestaltung und Programmierung:** Adrian Regez · contact@whatwastherebefore.com
 
-<!-- DOI-Badge: nach der ersten Zenodo-Veröffentlichung einfügen, z. B.
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
--->
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23191901.svg)](https://doi.org/10.5281/zenodo.23191901)
 
 ## Zitieren / How to cite
 
-Regez, A. (2026). *What Was There Before / Was vorher da war* (Version 1.0.0) [Interaktive Webanwendung]. https://whatwastherebefore.com
+Regez, A. (2026). *What Was There Before / Was vorher da war* (Version 1.0.1) [Interaktive Webanwendung]. https://doi.org/10.5281/zenodo.23191901
 
 Maschinenlesbare Angaben: [`CITATION.cff`](CITATION.cff) (GitHub zeigt dazu «Cite this repository»).
 

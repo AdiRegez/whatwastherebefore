@@ -24,13 +24,13 @@
     url:        "https://whatwastherebefore.com",
     host:       "Hostpoint AG, Rapperswil-Jona (CH)",
     year:       "2026",                    // Jahr der Erstveröffentlichung
-    version:    "1.0.0",                   // muss zum Release-Tag auf GitHub passen (v1.0.0)
-    versionDate:"2026-10-05",              // Datum dieser Version (JJJJ-MM-TT)
+    version:    "1.0.1",                   // muss zum Release-Tag auf GitHub passen (v1.0.1)
+    versionDate:"2026-10-06",              // Datum dieser Version (JJJJ-MM-TT)
 
     // ← DOI eintragen, sobald vorhanden – nur die Nummer, ohne https://doi.org/
     //   Empfohlen: die «Concept DOI» von Zenodo (steht für alle Versionen),
     //   z. B. "10.5281/zenodo.1234567". Leer lassen = wird nirgends angezeigt.
-    doi:  "",
+    doi:  "10.5281/zenodo.23191901",
 
     // ← Adresse des Git-Repositoriums eintragen, sobald es öffentlich ist,
     //   z. B. "https://github.com/benutzername/what-was-there-before".
