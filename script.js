@@ -88,17 +88,21 @@
                             // nachträgliche Ergänzung (für die Rubrik-Hervorhebung)
 
     /* Interaktiver 3D-Raum (Explorer)
-       Die Gesamttiefe des Raums ist bewusst GEDECKELT: unabhängig davon, wie
-       viele Löschungen ein Text ansammelt, bleibt der Raum gut erkundbar.
-       Nur die Länge des Endtexts (Zeilen) lässt ihn leicht wachsen. */
-    zSpaceBase:    240,  // px – Tiefe des Raums bei kurzen/wenig überarbeiteten Texten
-    zSpacePerLine: 5,    // px – Zuwachs je zusätzlicher Zeile des Endtexts
-    zSpaceMax:     480,  // px – harte Obergrenze, unabhängig von Textlänge/Löschungen
+       Der Raum wächst mit der Länge des Endtexts UND mit der Überarbeitungs-
+       geschichte (Anzahl Lösch-Schichten), bleibt aber gedeckelt, damit er gut
+       erkundbar ist. Die Schichten verteilen sich proportional zu ihrem
+       zeitlichen Abstand über die ganze Tiefe (siehe build3DScene). */
+    zSpaceBase:     240,  // px – Tiefe des Raums bei kurzen/wenig überarbeiteten Texten
+    zSpacePerLine:  5,    // px – Zuwachs je zusätzlicher Zeile des Endtexts
+    zSpacePerLayer: 12,   // px – Zuwachs je Lösch-Schicht (lange Arbeit = tiefer Raum)
+    zSpaceMax:      720,  // px – harte Obergrenze
     view3DW:    1000,   // logische Breite der 3D-Leinwand
     view3DH:    680,    // logische Höhe der 3D-Leinwand
     orbitSpeed: 0.45,   // Grad Drehung je gezogenem Pixel
-    zoomMin:    0.25,
-    zoomMax:    4.0,
+    zoomMin:    0.25,   // untere Zoomgrenze (bei langen Texten automatisch tiefer, siehe zoomLimits)
+    zoomMax:    4.0,    // obere Zoomgrenze (bei langen Texten automatisch höher)
+    zoomFitMinFactor: 0.6, // man kann immer bis 60 % der Gesamtansicht herauszoomen
+    zoomFitMaxFactor: 12,  // … und bis zum 12-Fachen der Gesamtansicht hinein
     axis3DColor: "#b3ab9c",
 
     /* Mausspur – Bewegung, Ruhe und Klicks während des Schreibens.
@@ -941,19 +945,30 @@
     // bekommt einen kompakten Raum), aber immer gedeckelt bei zSpaceMax – so
     // bleibt der Raum unabhängig von der Anzahl der Löschungen gut erkundbar.
     const targetZSpan = clamp(
-      CONFIG.zSpaceBase + (maxLineIdx + 1) * CONFIG.zSpacePerLine,
+      CONFIG.zSpaceBase + (maxLineIdx + 1) * CONFIG.zSpacePerLine
+                        + deletionEvents.length * CONFIG.zSpacePerLayer,
       CONFIG.zSpaceBase, CONFIG.zSpaceMax
     );
+    // Verteilung der Schichten in Z:
+    // Die Sättigungskurve (projDepth) bestimmt, wie VOLL der Raum insgesamt ist
+    // (wenig Geschichte = flacher Raum). Innerhalb davon liegen die Schichten
+    // PROPORTIONAL zu ihrer zeitlichen Tiefe – so stauchen sich die ältesten
+    // Schichten langer Sitzungen nicht mehr ganz hinten zusammen.
+    let dMax = 0;
+    for (const k in depths) if (depths[k] > dMax) dMax = depths[k];
+    dMax *= opts.depthIntensity;
+    const fill = 1 - Math.exp(-dMax / CONFIG.depthTau);
     // Historische Schichten – nur in Z nach hinten, X/Y bleiben original
     if (opts.showDeleted) {
       for (const ch of graveyard) {
         if (ch.char === "\n" || ch.char === " ") continue;
         const st = styleForChar(ch);
         const dRaw = (depths[ch.layer] || 0) * opts.depthIntensity;
-        const proj = projDepth(dRaw);
+        const proj = projDepth(dRaw);   // Opazität, Sepia, Unschärfe
         const jit = layerJitter(ch.layer);
         const adv = measureAdvance(ch.char, st.size, st.italic);
-        const z = -targetZSpan * proj.t; // gesättigt (proj.t < 1): nie über die Zielgröße hinaus
+        const zT = dMax > 0 ? fill * (dRaw / dMax) : 0;  // 0 … fill (< 1)
+        const z = -targetZSpan * zT;
         pts.push({ char: ch.char, x3: ch.fx + adv / 2 + jit.x, y3: ch.fy + st.size * 0.4 + jit.y, z3: z,
                    size: st.size, italic: st.italic, strokeW: st.strokeW, darken: 0,
                    kind: "h", depthT: proj.t, blur: proj.blur,
@@ -1103,7 +1118,9 @@
         const lvl = p.kind === "h" ? blurBucket(p.blur) : 0;
         const filt = lvl > 0 ? ' filter="url(#c' + lvl + ')"' : "";
         const op = p.opacity < 1 ? ' opacity="' + p.opacity.toFixed(3) + '"' : "";
-        out.push('<g' + filt + op + '><text x="' + round2(it.X) + '" y="' + round2(it.Y + asc) +
+        // Während einer Geste ohne Unschärfe zeichnen (Leistung); beim Loslassen kehrt sie zurück
+        const filtNow = gestureActive ? "" : filt;
+        out.push('<g' + filtNow + op + '><text x="' + round2(it.X) + '" y="' + round2(it.Y + asc) +
                  '" text-anchor="middle" font-family="' + fam + '" font-size="' + round2(fs) + '"' +
                  (p.italic ? ' font-style="italic"' : "") + ' fill="' + fill + '"' + stroke + '>' + escapeXML(p.char) + "</text></g>");
       }
@@ -1138,7 +1155,7 @@
   }
   function setViewMode(m) {
     applyModeUI(m);
-    if (m === "space") { resetCamera(); render3D(true); }
+    if (m === "space") { resetCamera(); render3D(false); }   // resetCamera baut die Szene bereits
     else renderStatic();
   }
   function setView(name) {
@@ -1153,9 +1170,43 @@
   }
 
   // Zeiger-/Rad-Interaktion (Maus & Touch vereinheitlicht) ----------------
+  // Zoom (Mausrad und Pinch) ist am Zeiger bzw. am Mittelpunkt der Finger
+  // verankert: der Punkt unter dem Zeiger bleibt stehen. So erreicht man auch
+  // den oberen und unteren Rand langer Texte direkt, ohne lange zu verschieben.
   const ptrs = new Map();
   const g3 = { mode: null, x0: 0, y0: 0, yaw0: 0, pitch0: 0, panX0: 0, panY0: 0, zoom0: 1, dist0: 1, mx0: 0, my0: 0 };
-  function pxToLogical() { const r = el.viz.getBoundingClientRect(); return CONFIG.view3DW / Math.max(1, r.width); }
+  let gestureActive = false;   // während Drehen/Zoomen: ohne Unschärfe zeichnen (schneller)
+  let wheelIdleTimer = 0;
+
+  function vizRect() { const svg = el.viz.querySelector("svg"); return (svg || el.viz).getBoundingClientRect(); }
+  function pxToLogical() { return CONFIG.view3DW / Math.max(1, vizRect().width); }
+  // Bildschirmposition -> logische Koordinate relativ zur Leinwandmitte
+  function clientToCentered(clientX, clientY) {
+    const r = vizRect(), k = CONFIG.view3DW / Math.max(1, r.width);
+    return { x: (clientX - r.left) * k - CONFIG.view3DW / 2, y: (clientY - r.top) * k - CONFIG.view3DH / 2 };
+  }
+  // Zoomgrenzen an die Gesamtansicht koppeln: auch sehr lange Texte lassen sich
+  // immer ganz herauszoomen und nah genug heranholen.
+  function zoomLimits() {
+    const fit = scene3D ? scene3D.fitZoom : 1;
+    return { min: Math.min(CONFIG.zoomMin, fit * CONFIG.zoomFitMinFactor),
+             max: Math.max(CONFIG.zoomMax, fit * CONFIG.zoomFitMaxFactor) };
+  }
+  // Zoom auf z1 setzen, sodass der Punkt (ax, ay) (relativ zur Mitte) an Ort bleibt
+  function zoomAt(z1, ax, ay, z0, panX0, panY0) {
+    const lim = zoomLimits();
+    z1 = clamp(z1, lim.min, lim.max);
+    const f = z1 / z0;
+    cam.panX = ax - (ax - panX0) * f;
+    cam.panY = ay - (ay - panY0) * f;
+    cam.zoom = z1;
+  }
+  function setGesture(on) {
+    if (gestureActive === on) return;
+    gestureActive = on;
+    if (!on) scheduleRender3D();   // Unschärfe wieder einblenden
+  }
+
   function twoPtr() { const a = [...ptrs.values()]; const dx = a[0].x - a[1].x, dy = a[0].y - a[1].y; return { dist: Math.hypot(dx, dy) || 1, mx: (a[0].x + a[1].x) / 2, my: (a[0].y + a[1].y) / 2 }; }
   function beginGesture(shift) {
     if (ptrs.size === 1) {
@@ -1178,17 +1229,22 @@
     ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (g3.mode === "orbit" && ptrs.size === 1) {
       const p = [...ptrs.values()][0];
+      setGesture(true);
       cam.yaw = g3.yaw0 + (p.x - g3.x0) * CONFIG.orbitSpeed;
       cam.pitch = clamp(g3.pitch0 + (p.y - g3.y0) * CONFIG.orbitSpeed, -88, 88);
       scheduleRender3D();
     } else if (g3.mode === "pan" && ptrs.size === 1) {
       const p = [...ptrs.values()][0], k = pxToLogical();
+      setGesture(true);
       cam.panX = g3.panX0 + (p.x - g3.x0) * k; cam.panY = g3.panY0 + (p.y - g3.y0) * k;
       scheduleRender3D();
     } else if (g3.mode === "pinch" && ptrs.size >= 2) {
       const m = twoPtr(), k = pxToLogical();
-      cam.zoom = clamp(g3.zoom0 * (m.dist / g3.dist0), CONFIG.zoomMin, CONFIG.zoomMax);
-      cam.panX = g3.panX0 + (m.mx - g3.mx0) * k; cam.panY = g3.panY0 + (m.my - g3.my0) * k;
+      setGesture(true);
+      // 1) am Anfangs-Mittelpunkt der Finger zoomen, 2) mit dem Mittelpunkt mitschieben
+      const a = clientToCentered(g3.mx0, g3.my0);
+      zoomAt(g3.zoom0 * (m.dist / g3.dist0), a.x, a.y, g3.zoom0, g3.panX0, g3.panY0);
+      cam.panX += (m.mx - g3.mx0) * k; cam.panY += (m.my - g3.my0) * k;
       scheduleRender3D();
     }
   }
@@ -1197,12 +1253,18 @@
     ptrs.delete(e.pointerId);
     try { el.viz.releasePointerCapture(e.pointerId); } catch (_) {}
     if (ptrs.size === 1) { const p = [...ptrs.values()][0]; g3.mode = "orbit"; g3.x0 = p.x; g3.y0 = p.y; g3.yaw0 = cam.yaw; g3.pitch0 = cam.pitch; }
-    else if (ptrs.size === 0) g3.mode = null;
+    else if (ptrs.size === 0) { g3.mode = null; setGesture(false); }
   }
   function onVizWheel(e) {
     if (viewMode !== "space") return;
     e.preventDefault();
-    cam.zoom = clamp(cam.zoom * Math.exp(-e.deltaY * 0.0015), CONFIG.zoomMin, CONFIG.zoomMax);
+    const a = clientToCentered(e.clientX, e.clientY);
+    // Trackpads liefern Pixel, manche Mäuse Zeilen/Seiten – vereinheitlichen
+    const dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? 400 : 1);
+    zoomAt(cam.zoom * Math.exp(-dy * 0.0015), a.x, a.y, cam.zoom, cam.panX, cam.panY);
+    setGesture(true);
+    clearTimeout(wheelIdleTimer);
+    wheelIdleTimer = setTimeout(() => { if (!ptrs.size) setGesture(false); }, 180);
     scheduleRender3D();
   }
   function onVizDbl() { if (viewMode === "space") setView("iso"); }
@@ -1387,6 +1449,20 @@
     el.editor.addEventListener("pointermove", onEditorPointerMove);
     el.editor.addEventListener("pointerdown", onEditorPointerDown);
     el.editor.addEventListener("pointerleave", onEditorPointerLeave);
+
+    // Fenstergrösse/Drehung während des Schreibens: Editor neu vermessen, damit
+    // Umbruchbreite und Mausspur weiter zum sichtbaren Text passen. Bereits
+    // gelöschte Zeichen behalten ihre damalige Position – sie sind Vergangenheit.
+    let resizeTimer = 0;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (document.body.getAttribute("data-stage") === "writing") {
+          mouseCurrentStroke = null;   // Strich unterbrechen: Massstab hat sich geändert
+          readEditorMetrics();
+        }
+      }, 150);
+    });
 
     // Komfort: Strg/Cmd + Enter beendet die Schreibphase
     el.editor.addEventListener("keydown", (e) => {

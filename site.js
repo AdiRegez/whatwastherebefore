@@ -24,8 +24,8 @@
     url:        "https://whatwastherebefore.com",
     host:       "Hostpoint AG, Rapperswil-Jona (CH)",
     year:       "2026",                    // Jahr der Erstveröffentlichung
-    version:    "1.0.2",                   // muss zum Release-Tag auf GitHub passen (v1.0.2)
-    versionDate:"2026-10-06",              // Datum dieser Version (JJJJ-MM-TT)
+    version:    "1.1.0",                   // muss zum Release-Tag auf GitHub passen (v1.1.0)
+    versionDate:"2026-10-28",              // Datum dieser Version (JJJJ-MM-TT)
 
     // ← DOI eintragen, sobald vorhanden – nur die Nummer, ohne https://doi.org/
     //   Empfohlen: die «Concept DOI» von Zenodo (steht für alle Versionen),
@@ -36,6 +36,9 @@
     //   z. B. "https://github.com/benutzername/what-was-there-before".
     //   Leer lassen = wird nirgends angezeigt.
     repo: "https://github.com/AdiRegez/whatwastherebefore",
+
+    // ← GitHub Sponsors. Leer lassen = Unterstützungs-Links werden nirgends angezeigt.
+    sponsors: "https://github.com/sponsors/AdiRegez",
   };
   SITE.author = SITE.givenName + " " + SITE.familyName;
   SITE.doiUrl = SITE.doi ? "https://doi.org/" + SITE.doi : "";
@@ -51,11 +54,13 @@
       title_research: "Forschung und Zitieren – What Was There Before",
       title_privacy:  "Datenschutz – What Was There Before",
       title_legal:    "Impressum und Kontakt – What Was There Before",
+      title_support:  "Unterstützen – What Was There Before",
       desc_home:      "Ein interaktives Kunstwerk, das den Schreibprozess als Palimpsest sichtbar macht: Tempo, Pausen, Streichungen, Ergänzungen und die Spur der Maus.",
       desc_about:     "Idee und verwandte Arbeiten: wie What Was There Before Schreibforschung, Spur und Palimpsest zu einem navigierbaren Bild des Schreibens verbindet.",
       desc_research:  "What Was There Before in Forschung und Lehre: Zitiervorschlag, DOI, Quellcode, Lizenz und Versionen.",
       desc_privacy:   "Datenschutz bei What Was There Before: Was du schreibst, bleibt in deinem Browser. Keine Cookies, kein Tracking.",
       desc_legal:     "Impressum und Kontakt von What Was There Before.",
+      desc_support:   "What Was There Before ist frei, werbefrei und ohne Tracking. Wer das Werk unterstützen möchte, kann dies über GitHub Sponsors tun – einmalig oder regelmässig.",
       placeholder:   "Beginne zu schreiben …",
       viewmodeLabel: "Ansicht",
       langLabel:     "Sprache",
@@ -77,11 +82,13 @@
       title_research: "Research and citation – What Was There Before",
       title_privacy:  "Privacy – What Was There Before",
       title_legal:    "Legal notice and contact – What Was There Before",
+      title_support:  "Support – What Was There Before",
       desc_home:      "An interactive artwork that makes the writing process visible as a palimpsest: tempo, pauses, deletions, additions and the trail of the mouse.",
       desc_about:     "Idea and related work: how What Was There Before combines writing research, trace and palimpsest into a navigable image of writing.",
       desc_research:  "What Was There Before in research and teaching: how to cite, DOI, source code, licence and versions.",
       desc_privacy:   "Privacy at What Was There Before: what you write stays in your browser. No cookies, no tracking.",
       desc_legal:     "Legal notice and contact for What Was There Before.",
+      desc_support:   "What Was There Before is free, ad-free and tracking-free. If you would like to support the work, you can do so via GitHub Sponsors – once or regularly.",
       placeholder:   "Start writing …",
       viewmodeLabel: "View",
       langLabel:     "Language",
@@ -158,6 +165,7 @@
       email: SITE.email,
       doi: SITE.doi,
       repo: SITE.repo.replace(/^https?:\/\//, ""),
+      sponsors: SITE.sponsors.replace(/^https?:\/\//, ""),
     };
     document.querySelectorAll("[data-site]").forEach((n) => {
       const k = n.getAttribute("data-site");
@@ -171,14 +179,14 @@
     });
 
     // Links auf Website, DOI und Repositorium
-    const hrefs = { url: SITE.url, doi: SITE.doiUrl, repo: SITE.repo };
+    const hrefs = { url: SITE.url, doi: SITE.doiUrl, repo: SITE.repo, sponsors: SITE.sponsors };
     document.querySelectorAll("[data-site-href]").forEach((a) => {
       const v = hrefs[a.getAttribute("data-site-href")];
       if (v) a.setAttribute("href", v);
     });
 
     // Elemente, die nur erscheinen, wenn DOI bzw. Repositorium eingetragen sind
-    const has = { doi: !!SITE.doi, repo: !!SITE.repo };
+    const has = { doi: !!SITE.doi, repo: !!SITE.repo, sponsors: !!SITE.sponsors };
     document.querySelectorAll("[data-when]").forEach((n) => {
       const k = n.getAttribute("data-when");
       const neg = k.charAt(0) === "!";
@@ -190,6 +198,27 @@
     if (cite) cite.innerHTML = citationHTML();
     const bib = document.getElementById("citeBib");
     if (bib) bib.textContent = bibtex();
+  }
+
+  /* ==========================================================================
+     Externe Links öffnen in einem neuen Tab
+     Als Absicherung für Links, denen target="_blank" im HTML fehlt. Extern ist
+     alles mit http(s), das nicht auf diese Website zeigt. E-Mail-Links bleiben,
+     wie sie sind.
+     ======================================================================== */
+  function markExternalLinks() {
+    const own = [location.host, SITE.url.replace(/^https?:\/\//, "")];
+    document.querySelectorAll("a[href]").forEach((a) => {
+      const href = a.getAttribute("href");
+      if (!/^https?:\/\//i.test(href)) return;
+      let host = "";
+      try { host = new URL(href).host; } catch (e) { return; }
+      if (own.includes(host)) return;
+      a.setAttribute("target", "_blank");
+      const rel = (a.getAttribute("rel") || "").split(/\s+/).filter(Boolean);
+      ["noopener", "noreferrer"].forEach((r) => { if (!rel.includes(r)) rel.push(r); });
+      a.setAttribute("rel", rel.join(" "));
+    });
   }
 
   function applyLang() {
@@ -226,6 +255,7 @@
     });
 
     fillSite();
+    markExternalLinks();
   }
 
   function setLang(next) {
