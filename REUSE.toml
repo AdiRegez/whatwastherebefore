@@ -1,0 +1,18 @@
+# Maschinenlesbare Urheber- und Lizenzangaben (REUSE-Standard, https://reuse.software)
+# für Dateien, die selbst keinen Kommentar tragen können oder sollen.
+# Prüfen mit: reuse lint
+version = 1
+
+# Logo, Icons, Vorschaubild und README: Texte und Abbildungen
+[[annotations]]
+path = ["favicon.svg", "favicon.ico", "apple-touch-icon.png", "og-image.png", "README.md"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Adrian Regez"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Technische Dateien und Metadaten
+[[annotations]]
+path = ["CITATION.cff", ".zenodo.json", "robots.txt", "sitemap.xml", "REUSE.toml", ".github/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Adrian Regez"
+SPDX-License-Identifier = "MIT"

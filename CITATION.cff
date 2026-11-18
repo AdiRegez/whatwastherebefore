@@ -15,8 +15,8 @@ authors:
   - given-names: Adrian
     family-names: Regez
     email: contact@whatwastherebefore.com
-version: 1.1.0
-date-released: 2026-10-28
+version: 1.1.1
+date-released: 2026-11-18
 url: "https://whatwastherebefore.com"
 repository-code: "https://github.com/AdiRegez/whatwastherebefore"
 doi: 10.5281/zenodo.23191900

@@ -5,7 +5,10 @@ Idee, Konzept, Gestaltung und Programmierung / idea, concept, design and program
 Adrian Regez · contact@whatwastherebefore.com
 
 -------------------------------------------------------------------------------
-PROGRAMMCODE / SOURCE CODE (*.html, style.css, script.js, site.js)
+PROGRAMMCODE / SOURCE CODE
+(*.html, style.css, script.js, site.js, CITATION.cff, .zenodo.json, robots.txt,
+sitemap.xml, REUSE.toml, .github/) – ausgenommen die unten genannten Texte und
+das Logo / except the texts and the logo listed below
 -------------------------------------------------------------------------------
 
 MIT License
@@ -32,7 +35,10 @@ SOFTWARE.
 
 -------------------------------------------------------------------------------
 TEXTE UND ABBILDUNGEN / TEXTS AND IMAGES
-(Texte der Website, Logo, favicon.svg, favicon.ico, apple-touch-icon.png, og-image.png)
+(Texte der Website und README.md; das Logo, auch wo es als SVG in die HTML-Seiten
+eingebettet ist; favicon.svg, favicon.ico, apple-touch-icon.png, og-image.png /
+website texts and README.md; the logo, including where it is embedded as SVG in
+the HTML pages; favicon.svg, favicon.ico, apple-touch-icon.png, og-image.png)
 -------------------------------------------------------------------------------
 
 Creative Commons Attribution 4.0 International (CC BY 4.0)
@@ -40,3 +46,13 @@ https://creativecommons.org/licenses/by/4.0/
 
 Was Nutzerinnen und Nutzer mit dem Werk schreiben und exportieren, gehört ihnen.
 Whatever users write and export with the work belongs to them.
+
+-------------------------------------------------------------------------------
+MASCHINENLESBARE ANGABEN / MACHINE-READABLE NOTICES
+-------------------------------------------------------------------------------
+
+Jede Datei trägt Urheber- und Lizenzvermerke nach dem REUSE-Standard
+(https://reuse.software): als SPDX-Kommentar in der Datei oder in REUSE.toml.
+Die vollständigen Lizenztexte liegen im Ordner LICENSES/.
+Every file carries copyright and licence notices following the REUSE standard,
+either as an SPDX comment in the file or in REUSE.toml. Full licence texts are in LICENSES/.

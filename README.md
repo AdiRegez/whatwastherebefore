@@ -13,7 +13,7 @@ Streichungen, Ergänzungen und die Spur der Maus.
 
 ## Zitieren / How to cite
 
-Regez, A. (2026). *What Was There Before / Was vorher da war* (Version 1.1.0) [Interaktive Webanwendung]. https://doi.org/10.5281/zenodo.23191900
+Regez, A. (2026). *What Was There Before / Was vorher da war* (Version 1.1.1) [Interaktive Webanwendung]. https://doi.org/10.5281/zenodo.23191900
 
 Maschinenlesbare Angaben: [`CITATION.cff`](CITATION.cff) (GitHub zeigt dazu «Cite this repository»).
 
@@ -40,3 +40,6 @@ Zum lokalen Ausprobieren genügt es, `index.html` im Browser zu öffnen.
 
 Programmcode: MIT. Texte und Abbildungen (inkl. Logo): CC BY 4.0. Was Nutzende mit dem Werk schreiben und
 exportieren, gehört ihnen. Details: [`LICENSE.txt`](LICENSE.txt).
+
+Jede Datei trägt maschinenlesbare Urheber- und Lizenzvermerke nach dem [REUSE-Standard](https://reuse.software) (SPDX); die Lizenztexte liegen im Ordner [`LICENSES/`](LICENSES/).
+*Every file carries machine-readable copyright and licence notices following the REUSE standard; licence texts are in `LICENSES/`.*

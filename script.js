@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Adrian Regez
+// SPDX-License-Identifier: MIT
+
 /* ============================================================================
    WHAT WAS THERE BEFORE  ·  script.js
    ----------------------------------------------------------------------------

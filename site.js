@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Adrian Regez
+// SPDX-License-Identifier: MIT
+
 /* ============================================================================
    WHAT WAS THERE BEFORE  ·  site.js
    ----------------------------------------------------------------------------
@@ -24,8 +27,8 @@
     url:        "https://whatwastherebefore.com",
     host:       "Hostpoint AG, Rapperswil-Jona (CH)",
     year:       "2026",                    // Jahr der Erstveröffentlichung
-    version:    "1.1.0",                   // muss zum Release-Tag auf GitHub passen (v1.1.0)
-    versionDate:"2026-10-28",              // Datum dieser Version (JJJJ-MM-TT)
+    version:    "1.1.1",                   // muss zum Release-Tag auf GitHub passen (v1.1.1)
+    versionDate:"2026-11-18",              // Datum dieser Version (JJJJ-MM-TT)
 
     // ← DOI eintragen, sobald vorhanden – nur die Nummer, ohne https://doi.org/
     //   Empfohlen: die «Concept DOI» von Zenodo (steht für alle Versionen),

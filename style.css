@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 Adrian Regez */
+/* SPDX-License-Identifier: MIT */
+
 /* ============================================================
    What Was There Before
    Gestaltung: Tinte auf Papier. Die Seite ist ruhig; nur der
@@ -17,7 +20,12 @@
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  /* Platz für den Rollbalken immer freihalten: sonst springt das Layout seitlich,
+     wenn eine Seite (oder eine Sprachfassung) mal kürzer, mal länger als das Fenster ist */
+  scrollbar-gutter: stable;
+}
 
 body {
   margin: 0;
@@ -82,13 +90,15 @@ em { font-style: italic; }
   transform: translate(20px, -15px) scale(0.985);
   opacity: 0.15;
   filter: blur(1.1px);
-  animation: ghostDeep 1000ms cubic-bezier(.2,.7,.2,1) both;
+  animation: ghostDeep 1000ms cubic-bezier(.2,.7,.2,1) both,
+             driftDeep 23s cubic-bezier(.45,0,.55,1) 1000ms infinite alternate;
 }
 .title::after {           /* nähere Schicht */
   transform: translate(10px, -8px) scale(0.992);
   opacity: 0.26;
   filter: blur(0.5px);
-  animation: ghostNear 1000ms cubic-bezier(.2,.7,.2,1) both;
+  animation: ghostNear 1000ms cubic-bezier(.2,.7,.2,1) both,
+             driftNear 17s cubic-bezier(.45,0,.55,1) 1000ms infinite alternate;
 }
 @keyframes ghostDeep {
   from { transform: translate(0,0) scale(1); opacity: 0; }
@@ -97,6 +107,23 @@ em { font-style: italic; }
 @keyframes ghostNear {
   from { transform: translate(0,0) scale(1); opacity: 0; }
   to   { transform: translate(10px,-8px) scale(0.992); opacity: 0.26; }
+}
+
+/* Danach treiben die Geister langsam entlang der Tiefe, wie die Schichten im Werk:
+   weiter nach hinten-oben heisst kleiner, unschärfer und blasser; dazu eine kleine
+   Mikro-Verschiebung je Schicht ("Erinnerung ist nie exakt"). Unterschiedliche
+   Dauern (23 s / 17 s), damit sich die Bewegung nicht mechanisch wiederholt. */
+@keyframes driftDeep {
+  0%   { transform: translate(20px,-15px) scale(0.985);   opacity: 0.15; filter: blur(1.1px); }
+  35%  { transform: translate(25.5px,-19px) scale(0.981); opacity: 0.12; filter: blur(1.4px); }
+  70%  { transform: translate(22px,-17.5px) scale(0.983); opacity: 0.14; filter: blur(1.25px); }
+  100% { transform: translate(16.5px,-12.5px) scale(0.988); opacity: 0.18; filter: blur(0.9px); }
+}
+@keyframes driftNear {
+  0%   { transform: translate(10px,-8px) scale(0.992);    opacity: 0.26; filter: blur(0.5px); }
+  40%  { transform: translate(13.5px,-10px) scale(0.989); opacity: 0.22; filter: blur(0.7px); }
+  75%  { transform: translate(11.5px,-9.5px) scale(0.991); opacity: 0.24; filter: blur(0.6px); }
+  100% { transform: translate(8px,-6.5px) scale(0.994);   opacity: 0.29; filter: blur(0.4px); }
 }
 
 .intro-copy p {
@@ -425,12 +452,12 @@ a:focus-visible,
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
   color: var(--ink);
 }
-.brand-mark { display: block; width: 20px; height: 23px; flex: none; }
-.brand-name { font-size: 15px; letter-spacing: 0.005em; }
+.brand-mark { display: block; width: 30px; height: 34px; flex: none; }
+.brand-name { font-size: 16px; letter-spacing: 0.005em; }
 .brand:hover .brand-name { text-decoration: underline; text-decoration-color: var(--faint); }
 
 .site-nav {
