@@ -1,0 +1,15 @@
+# Prüft bei jeder Änderung, ob alle Dateien Urheber- und Lizenzangaben tragen (REUSE).
+name: REUSE
+
+on: [push, pull_request]
+
+jobs:
+  reuse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install reuse
+      - run: reuse lint
